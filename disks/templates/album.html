@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+table, th, td {
+  border: 1px solid darkgrey;
+  border-collapse: collapse;
+    font-size: x-large;
+}
+        th, td {
+  padding: 10px;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Album</title>
+</head>
+<h1>{{ alb.Title }}</h1>
+<body>
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Composer</th>
+        <th>Duration</th>
+        <th>Unit Price</th>
+    </tr>
+
+    {% for track in tracks %}
+        <tr>
+            <td>{{ track.Name }}</td>
+            <td>{{ track.Composer }}</td>
+            <td>{{ track.Milliseconds }} ms</td>
+            <td>${{ track.UnitPrice }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% load static %}
+<a href="{% url 'accueil' %}">
+    <img src="{% static 'disks/back.png' %}" height="3%" width="3%" "back"/>
+</a>
+
+
+</body>
+</html>
