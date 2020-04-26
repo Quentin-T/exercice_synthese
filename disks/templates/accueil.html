@@ -20,6 +20,27 @@
   padding: 15px;
 }
 
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -63,16 +84,19 @@ table, th, td {
 
 <body>
 <div class="row">
-    <div class="col-7">
-    <button onclick="window.location.href='{% url 'accueil' %}'"><h1>Albums</h1></button>
+    <div class="col-4">
+    <a href="{% url 'accueil' %}" style="text-align: "><h2>Home</h2></a>
     </div>
-    <div class="col-5">
+
+    <div class="col-4">
+    <h1 style="text-align: center">Albums</h1>
+    </div>
+
     <form method="post" action=".">
     {% csrf_token %}
-    <tr><td><input type="text" name="con" maxlength="200" required id="id_con"></td>
-    <input type="submit" value="Rechercher" style="background:#33b5e5" size="200%"/>
+    <div class="col-2"><input type="text" name="con" maxlength="200" required id="id_con"></div>
+    <div class="col-2"><input type="submit" value="Rechercher"/></div>
     </form>
-        </div>
 </div>
 <table width="100%">
     {% for album in alb %}
